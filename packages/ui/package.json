@@ -3,19 +3,19 @@
   "version": "0.0.1",
   "private": true,
   "type": "module",
-  "main": "./dist/index.js",
+  "main": "./dist/index.cjs",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js",
-      "require": "./dist/index.js"
+      "require": "./dist/index.cjs"
     },
-    "./Button.css": "./dist/Button.css"
+    "./style.css": "./dist/style.css"
   },
   "scripts": {
-    "build": "tsup",
+    "build": "vite build",
     "lint": "eslint ."
   },
   "peerDependencies": {
@@ -25,9 +25,11 @@
   "devDependencies": {
     "@types/react": "^19.2.1",
     "@types/react-dom": "^19.2.1",
+    "@vitejs/plugin-react": "^4.3.4",
     "react": "^19.2.1",
     "react-dom": "^19.2.1",
-    "tsup": "^8.3.5",
-    "typescript": "~5.6.2"
+    "typescript": "~5.6.2",
+    "vite": "^6.0.0",
+    "vite-plugin-dts": "^4.3.0"
   }
 }
