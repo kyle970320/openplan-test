@@ -3,7 +3,11 @@
   "private": true,
   "scripts": {
     "build": "turbo run build",
+    "build:ui": "pnpm --filter @openplan-test/ui build",
+    "build:web": "pnpm --filter web build",
+    "build:storybook": "pnpm --filter storybook build",
     "dev": "turbo run dev",
+    "storybook": "turbo run storybook",
     "lint": "turbo run lint",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\"",
