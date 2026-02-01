@@ -4,4 +4,5 @@
   --color-bg: #fafafa;
   --color-text-primary: #111111;
   --color-text-secondary: #1a1a1a;
+  --breakpoint-xs: 23.5rem; /* 376px */
 }
