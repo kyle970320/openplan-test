@@ -12,6 +12,7 @@
   "dependencies": {
     "@openplan-test/ui": "workspace:*",
     "@tanstack/react-query": "^5.62.0",
+    "axios": "^1.7.0",
     "react": "^19.2.1",
     "react-dom": "^19.2.1",
     "react-error-boundary": "^5.0.0",
