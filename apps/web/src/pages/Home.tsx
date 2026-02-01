@@ -2,7 +2,7 @@ import { Button } from "@openplan-test/ui";
 import { useNavigate } from "react-router-dom";
 import { usePhotoInfo } from "../entities";
 import { usePhotoStore } from "../app/store/photoStore";
-import { useMediaQuery } from "../shared/hooks/usMediaQuery";
+import { useMediaQuery } from "../shared/hooks/useMediaQuery";
 import { findLargeMediaQuery } from "../shared/utils/mediaQuery";
 
 export default function HomePage() {
@@ -23,7 +23,7 @@ export default function HomePage() {
 
   return (
     <div className="h-full flex flex-col items-center">
-      <div className="flex-1 flex flex-col items-center justify-center text-[32px] font-semibold">
+      <div className="flex-1 flex flex-col items-center justify-center text-[2rem] text-center font-semibold">
         <p>안녕하세요</p>
         <p>지원자 박민규입니다.</p>
       </div>

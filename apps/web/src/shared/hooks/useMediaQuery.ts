@@ -2,7 +2,9 @@ import { useEffect, useState } from "react";
 import { matchMediaQuery } from "../utils/mediaQuery";
 
 export const useMediaQuery = () => {
-  const [mediaQuery, setMediaQuery] = useState<string>("");
+  const [mediaQuery, setMediaQuery] = useState<string>(() => {
+    return matchMediaQuery() || "lg";
+  });
 
   useEffect(() => {
     const handleResize = () => {
