@@ -3,22 +3,25 @@ import styles from "./Button.module.css";
 
 export type ButtonVariant = "primary" | "secondary";
 
-export type ButtonSize = "sm" | "md" | "lg";
+export type ButtonSize = "sm" | "md" | "lg" | "full";
 
+/**
+ * @interface ButtonProps
+ * @param variant - 버튼 스타일
+ * @param size - 버튼 크기
+ * @param disabled - 버튼 비활성화 여부
+ * @param loading - 버튼 로딩 상태
+ * @param onClick - 버튼 클릭 핸들러
+ * @param children - 버튼 내용
+ * @param className - 버튼 클래스 이름
+ */
 export interface ButtonProps {
-  /** 스타일 변형 (기본: primary) */
   variant?: ButtonVariant;
-  /** 버튼 크기 (기본: md) */
   size?: ButtonSize;
-  /** 비활성화 여부 */
   disabled?: boolean;
-  /** 로딩 상태 (스피너 표시, 클릭 불가) */
   loading?: boolean;
-  /** 클릭 핸들러 */
   onClick?: () => void;
-  /** 버튼 내용 */
   children: ReactNode;
-  /** 외부에서 전달하는 클래스 (Tailwind 유틸 등). 내부 스타일 뒤에 병합됨 */
   className?: string;
 }
 
@@ -26,6 +29,7 @@ const sizeClasses: Record<ButtonSize, string> = {
   sm: styles.sm,
   md: styles.md,
   lg: styles.lg,
+  full: styles.full,
 };
 
 const variantClasses: Record<ButtonVariant, string> = {
@@ -62,12 +66,7 @@ export function Button({
     .join(" ");
 
   return (
-    <button
-      type="button"
-      disabled={isDisabled}
-      onClick={onClick}
-      className={mergedClassName}
-    >
+    <button type="button" disabled={isDisabled} onClick={onClick} className={mergedClassName}>
       {loading ? (
         <>
           <span className={styles.spinner} aria-hidden />
