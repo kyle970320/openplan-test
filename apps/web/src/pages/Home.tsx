@@ -2,11 +2,16 @@ import { Button } from "@openplan-test/ui";
 import { useNavigate } from "react-router-dom";
 import { usePhotoInfo } from "../entities";
 import { usePhotoStore } from "../app/store/photoStore";
+import { useMediaQuery } from "../shared/hooks/useMediaQuery";
+import { findLargeMediaQuery } from "../shared/utils/mediaQuery";
 
 export default function HomePage() {
   const navigate = useNavigate();
   const setPhotoInfo = usePhotoStore((s) => s.setPhotoInfo);
   const { refetch, isFetching } = usePhotoInfo("0", { enabled: false });
+
+  const { mediaQuery } = useMediaQuery();
+  const isOverMobile = findLargeMediaQuery("xs", mediaQuery);
 
   const handleFetchPhoto = async () => {
     const { data } = await refetch();
@@ -17,15 +22,15 @@ export default function HomePage() {
   };
 
   return (
-    <div className="flex flex-col items-center flex-1 bg-bg">
-      <div className="flex-1 flex flex-col items-center justify-center text-[32px] font-semibold">
+    <div className="h-full flex flex-col items-center">
+      <div className="flex-1 flex flex-col items-center justify-center text-[2rem] text-center font-semibold">
         <p>안녕하세요</p>
         <p>지원자 박민규입니다.</p>
       </div>
-      <div className="py-10">
+      <div className="flex justify-center w-full py-10">
         <Button
           variant="secondary"
-          size="lg"
+          size={!isOverMobile ? "full" : "lg"}
           onClick={handleFetchPhoto}
           disabled={isFetching}
           loading={isFetching}
