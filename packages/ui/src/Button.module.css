@@ -30,6 +30,10 @@
   width: 335px;
 }
 
+.full {
+  width: 100%;
+}
+
 /* Primary - 파란색 계열 */
 .primary {
   background-color: #2563eb;
