@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { matchMediaQuery } from "../utils/mediaQuery";
+import { matchMediaQuery } from "@/shared/utils/mediaQuery";
 
 export const useMediaQuery = () => {
   const [mediaQuery, setMediaQuery] = useState<string>(() => {

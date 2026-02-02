@@ -1,7 +1,8 @@
-import { Navigate } from "react-router-dom";
-import { usePhotoStore } from "@/app/store/photoStore";
-import { FLAG_KEYS, useFlagStore } from "../store/flagStore";
 import { useEffect } from "react";
+import { Navigate } from "react-router-dom";
+
+import { usePhotoStore } from "@/app/store/photoStore";
+import { FLAG_KEYS, useFlagStore } from "@/app/store/flagStore";
 
 export default function RedirectInterceptor() {
   const photoInfo = usePhotoStore((s) => s.photoInfo);

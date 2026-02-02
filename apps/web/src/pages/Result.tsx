@@ -1,11 +1,13 @@
-import { Button } from "@openplan-test/ui";
-import { usePhotoStore } from "../app/store/photoStore";
-import { useNavigate } from "react-router-dom";
-import DetailCard from "../widgets/detail/DetailCard";
-import { useMediaQuery } from "../shared/hooks/useMediaQuery";
-import { findLargeMediaQuery } from "../shared/utils/mediaQuery";
-import { Snackbar } from "@minus-ui/core";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+
+import { Snackbar } from "@minus-ui/core";
+import { Button } from "@openplan-test/ui";
+
+import { usePhotoStore } from "@/app/store/photoStore";
+import DetailCard from "@/widgets/detail/DetailCard";
+import { useMediaQuery } from "@/shared/hooks/useMediaQuery";
+import { findLargeMediaQuery } from "@/shared/utils/mediaQuery";
 import { FLAG_KEYS, useFlagStore } from "@/app/store/flagStore";
 
 export default function ResultPage() {
