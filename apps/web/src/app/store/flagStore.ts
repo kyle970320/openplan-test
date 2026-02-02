@@ -1,15 +1,18 @@
 import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
 
-type FlagKey = "no-photo-info" | "already-fetched";
+const STORAGE_KEY = "web-flag-store";
+
+export const FLAG_KEYS = {
+  NO_PHOTO_INFO: "no-photo-info",
+  ALREADY_FETCHED: "already-fetched",
+} as const;
 
 interface FlagState {
-  flag: FlagKey | null;
-  setFlag: (flag: FlagKey | null) => void;
+  flag: (typeof FLAG_KEYS)[keyof typeof FLAG_KEYS] | null;
+  setFlag: (flag: (typeof FLAG_KEYS)[keyof typeof FLAG_KEYS] | null) => void;
   clearFlag: () => void;
 }
-
-const STORAGE_KEY = "web-flag-store";
 
 export const useFlagStore = create<FlagState>()(
   persist(
