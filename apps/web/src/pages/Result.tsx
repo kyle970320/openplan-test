@@ -22,6 +22,16 @@ export default function ResultPage() {
     }
   }, [alreadyFetched, navigate]);
 
+  useEffect(() => {
+    if (!photoInfo) {
+      const timer = setTimeout(() => {
+        navigate("/home", { state: "no-photo-info", replace: true });
+      }, 1000);
+
+      return () => clearTimeout(timer);
+    }
+  }, [photoInfo, navigate]);
+
   if (!photoInfo) {
     return (
       <div className="h-full flex flex-col items-center justify-center gap-4">
