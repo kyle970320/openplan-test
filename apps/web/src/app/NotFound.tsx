@@ -1,8 +1,22 @@
-export default function NotFoundPage() {
+import { useNavigate } from "react-router-dom";
+
+import { Button } from "@openplan-test/ui";
+
+import { Ban } from "@/shared/ui/Ban";
+
+export default function NotFound() {
+  const navigate = useNavigate();
+
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col items-center justify-center gap-4 p-8">
-      <h1 className="text-2xl font-bold text-gray-900">404</h1>
-      <p className="text-gray-600">페이지를 찾을 수 없습니다.</p>
+    <div className="flex flex-col gap-4 px-5 w-full h-screen items-center justify-center">
+      <Ban size={100} />
+      <h1 className="mt-4 text-2xl text-text-primary font-semibold">페이지를 찾을 수 없어요</h1>
+      <p className="text-sm text-text-secondary">
+        요청하신 주소가 존재하지 않거나 이동되었을 수 있습니다.
+      </p>
+      <Button variant="primary" className="mt-2" onClick={() => navigate("/")}>
+        홈으로 돌아가기
+      </Button>
     </div>
   );
 }
