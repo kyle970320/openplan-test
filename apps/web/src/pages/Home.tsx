@@ -1,18 +1,24 @@
 import { Button } from "@openplan-test/ui";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { usePhotoInfo } from "@/entities";
 import { usePhotoStore } from "@/app/store/photoStore";
 import { useMediaQuery } from "@/shared/hooks/useMediaQuery";
 import { findLargeMediaQuery } from "@/shared/utils/mediaQuery";
 import { useThrottle } from "@/shared/hooks/useThrottle";
+import { useEffect } from "react";
+import { Snackbar } from "@minus-ui/core";
 
 export default function HomePage() {
   const navigate = useNavigate();
+  const location = useLocation();
+  const noPhotoInfo = location.state === "no-photo-info";
+
   const { setPhotoInfo } = usePhotoStore();
   const { refetch, isFetching } = usePhotoInfo("0", { enabled: false });
   const { throttledFunc: throttledRefetch, isThrottledLoading } = useThrottle(refetch, 800);
   const { mediaQuery } = useMediaQuery();
   const isOverMobile = findLargeMediaQuery("xs", mediaQuery);
+
   const isButtonLoading = isFetching || isThrottledLoading;
   const handleFetchPhoto = async () => {
     const result = await throttledRefetch();
@@ -25,6 +31,12 @@ export default function HomePage() {
       navigate("/result");
     }
   };
+
+  useEffect(() => {
+    if (noPhotoInfo) {
+      Snackbar.show({ type: "info", message: "조회 이력이 없어 홈페이지로 이동되었습니다." });
+    }
+  }, [noPhotoInfo, navigate]);
 
   return (
     <div className="h-full flex flex-col items-center">
