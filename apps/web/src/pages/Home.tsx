@@ -7,19 +7,23 @@ import { findLargeMediaQuery } from "@/shared/utils/mediaQuery";
 import { useThrottle } from "@/shared/hooks/useThrottle";
 import { useEffect } from "react";
 import { Snackbar } from "@minus-ui/core";
+import { useFlagStore } from "@/app/store/flagStore";
 
 export default function HomePage() {
   const navigate = useNavigate();
-  const location = useLocation();
-  const noPhotoInfo = location.state === "no-photo-info";
 
-  const { setPhotoInfo } = usePhotoStore();
+  const photoInfo = usePhotoStore((s) => s.photoInfo);
+  const setPhotoInfo = usePhotoStore((s) => s.setPhotoInfo);
+  const flag = useFlagStore((s) => s.flag);
+  const clearFlag = useFlagStore((s) => s.clearFlag);
+
   const { refetch, isFetching } = usePhotoInfo("0", { enabled: false });
   const { throttledFunc: throttledRefetch, isThrottledLoading } = useThrottle(refetch, 800);
   const { mediaQuery } = useMediaQuery();
   const isOverMobile = findLargeMediaQuery("xs", mediaQuery);
 
   const isButtonLoading = isFetching || isThrottledLoading;
+
   const handleFetchPhoto = async () => {
     const result = await throttledRefetch();
     if (!result) {
@@ -33,10 +37,11 @@ export default function HomePage() {
   };
 
   useEffect(() => {
-    if (noPhotoInfo) {
+    if (flag === "no-photo-info" && !photoInfo) {
       Snackbar.show({ type: "info", message: "조회 이력이 없어 홈페이지로 이동되었습니다." });
+      clearFlag();
     }
-  }, [noPhotoInfo, navigate]);
+  }, [flag, photoInfo, clearFlag]);
 
   return (
     <div className="h-full flex flex-col items-center">

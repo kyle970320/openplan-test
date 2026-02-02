@@ -1,36 +1,40 @@
 import { Button } from "@openplan-test/ui";
 import { usePhotoStore } from "../app/store/photoStore";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import DetailCard from "../widgets/detail/DetailCard";
 import { useMediaQuery } from "../shared/hooks/useMediaQuery";
 import { findLargeMediaQuery } from "../shared/utils/mediaQuery";
 import { Snackbar } from "@minus-ui/core";
 import { useEffect } from "react";
+import { useFlagStore } from "@/app/store/flagStore";
 
 export default function ResultPage() {
-  const photoInfo = usePhotoStore((s) => s.photoInfo);
   const navigate = useNavigate();
-  const location = useLocation();
-  const alreadyFetched = location.state === "already-fetched";
+  const photoInfo = usePhotoStore((s) => s.photoInfo);
+  const flag = useFlagStore((s) => s.flag);
+  const setFlag = useFlagStore((s) => s.setFlag);
+  const clearFlag = useFlagStore((s) => s.clearFlag);
 
   const { mediaQuery } = useMediaQuery();
   const isOverMobile = findLargeMediaQuery("xs", mediaQuery);
 
   useEffect(() => {
-    if (alreadyFetched) {
+    if (flag === "already-fetched" && photoInfo) {
       Snackbar.show({ type: "info", message: "조회 이력이 있어 상세페이지로 이동되었습니다." });
+      clearFlag();
     }
-  }, [alreadyFetched, navigate]);
+  }, [flag, photoInfo, clearFlag]);
 
   useEffect(() => {
     if (!photoInfo) {
       const timer = setTimeout(() => {
+        setFlag("no-photo-info");
         navigate("/home", { state: "no-photo-info", replace: true });
       }, 1000);
 
       return () => clearTimeout(timer);
     }
-  }, [photoInfo, navigate]);
+  }, [photoInfo, navigate, setFlag]);
 
   if (!photoInfo) {
     return (
