@@ -1,11 +1,10 @@
-import { RouterProvider } from "react-router-dom";
-import { router } from "./routes/router";
 import { QueryProvider } from "./query/QueryProvider";
+import { Routers } from "./routes/Routers";
 
 export default function App() {
   return (
     <QueryProvider>
-      <RouterProvider router={router} />
+      <Routers />
     </QueryProvider>
   );
 }
