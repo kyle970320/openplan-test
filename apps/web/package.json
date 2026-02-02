@@ -5,11 +5,13 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "web": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint . --max-warnings 0",
     "preview": "vite preview"
   },
   "dependencies": {
+    "@minus-ui/core": "^0.9.9",
     "@openplan-test/ui": "workspace:*",
     "@tanstack/react-query": "^5.62.0",
     "axios": "^1.7.0",
