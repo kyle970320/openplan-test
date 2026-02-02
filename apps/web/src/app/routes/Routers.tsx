@@ -1,14 +1,17 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import HomePage from "../../pages/Home";
-import ResultPage from "../../pages/Result";
-import NotFoundPage from "../NotFound";
-import Layout from "../Layout";
+
+import HomePage from "@/pages/Home";
+import ResultPage from "@/pages/Result";
+import Layout from "@/app/Layout";
+
 import RedirectInterceptor from "./RedirectInterceptor";
+import RouteError from "./RouterError";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Layout />,
+    errorElement: <RouteError />,
     children: [
       {
         index: true,
@@ -23,10 +26,6 @@ const router = createBrowserRouter([
         element: <ResultPage />,
       },
     ],
-  },
-  {
-    path: "*",
-    element: <NotFoundPage />,
   },
 ]);
 

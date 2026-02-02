@@ -1,6 +1,7 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-import type { PhotoInfoType } from "../../entities/photo";
+
+import type { PhotoInfoType } from "@/entities/photo";
 
 interface PhotoState {
   photoInfo: PhotoInfoType | null;
