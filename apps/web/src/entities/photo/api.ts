@@ -1,9 +1,9 @@
 import axios from "axios";
-import type { PicsumPhotoInfo } from "./types";
+import type { PhotoInfoType } from "./types";
 
 const BASE_URL = import.meta.env.VITE_PICSUM_BASE_URL;
 
-export async function getPicsumPhotoInfo(photoId: string): Promise<PicsumPhotoInfo> {
-  const { data } = await axios.get<PicsumPhotoInfo>(`${BASE_URL}/id/${photoId}/info`);
+export async function getPhotoInfoType(photoId: string): Promise<PhotoInfoType> {
+  const { data } = await axios.get<PhotoInfoType>(`${BASE_URL}/id/${photoId}/info`);
   return data;
 }

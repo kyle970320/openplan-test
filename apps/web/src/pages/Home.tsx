@@ -1,20 +1,26 @@
+import { useEffect } from "react";
 import { Button } from "@openplan-test/ui";
 import { useNavigate } from "react-router-dom";
-import { usePhotoInfo } from "../entities";
-import { usePhotoStore } from "../app/store/photoStore";
-import { useMediaQuery } from "../shared/hooks/useMediaQuery";
-import { findLargeMediaQuery } from "../shared/utils/mediaQuery";
+import { usePhotoInfo } from "@/entities";
+import { usePhotoStore } from "@/app/store/photoStore";
+import { useMediaQuery } from "@/shared/hooks/useMediaQuery";
+import { findLargeMediaQuery } from "@/shared/utils/mediaQuery";
+import { useThrottle } from "@/shared/hooks/useThrottle";
 
 export default function HomePage() {
   const navigate = useNavigate();
-  const setPhotoInfo = usePhotoStore((s) => s.setPhotoInfo);
+  const { setPhotoInfo } = usePhotoStore();
   const { refetch, isFetching } = usePhotoInfo("0", { enabled: false });
-
+  const throttledRefetch = useThrottle(refetch, 800);
   const { mediaQuery } = useMediaQuery();
   const isOverMobile = findLargeMediaQuery("xs", mediaQuery);
 
   const handleFetchPhoto = async () => {
-    const { data } = await refetch();
+    const result = await throttledRefetch();
+    if (!result) {
+      return;
+    }
+    const { data } = result;
     if (data) {
       setPhotoInfo(data);
       navigate("/result");

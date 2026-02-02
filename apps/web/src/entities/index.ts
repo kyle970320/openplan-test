@@ -1,1 +1,1 @@
-export { getPicsumPhotoInfo, usePhotoInfo, type PicsumPhotoInfo } from "./photo";
+export { getPhotoInfoType, usePhotoInfo, type PhotoInfoType } from "./photo";
