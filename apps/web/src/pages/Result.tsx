@@ -1,15 +1,27 @@
 import { Button } from "@openplan-test/ui";
 import { usePhotoStore } from "../app/store/photoStore";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import DetailCard from "../widgets/detail/DetailCard";
 import { useMediaQuery } from "../shared/hooks/useMediaQuery";
 import { findLargeMediaQuery } from "../shared/utils/mediaQuery";
+import { Snackbar } from "@minus-ui/core";
+import { useEffect } from "react";
 
 export default function ResultPage() {
   const photoInfo = usePhotoStore((s) => s.photoInfo);
   const navigate = useNavigate();
+  const location = useLocation();
+  const alreadyFetched = location.state === "already-fetched";
+
   const { mediaQuery } = useMediaQuery();
   const isOverMobile = findLargeMediaQuery("xs", mediaQuery);
+
+  useEffect(() => {
+    if (alreadyFetched) {
+      Snackbar.show({ type: "info", message: "조회 이력이 있어 상세페이지로 이동되었습니다." });
+    }
+  }, [alreadyFetched, navigate]);
+
   if (!photoInfo) {
     return (
       <div className="h-full flex flex-col items-center justify-center gap-4">
@@ -43,7 +55,7 @@ export default function ResultPage() {
           <Button
             variant="secondary"
             size={!isOverMobile ? "full" : "sm"}
-            onClick={() => navigate("/")}
+            onClick={() => navigate("/home")}
           >
             <span>이전</span>
           </Button>
