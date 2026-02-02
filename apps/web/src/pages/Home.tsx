@@ -1,15 +1,14 @@
+import { Snackbar } from "@minus-ui/core";
+import { Button } from "@openplan-test/ui";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { Snackbar } from "@minus-ui/core";
-import { Button } from "@openplan-test/ui";
-
-import { usePhotoStore } from "@/app/store/photoStore";
 import { FLAG_KEYS, useFlagStore } from "@/app/store/flagStore";
+import { usePhotoStore } from "@/app/store/photoStore";
 import { usePhotoInfo } from "@/entities";
 import { useMediaQuery } from "@/shared/hooks/useMediaQuery";
-import { findLargeMediaQuery } from "@/shared/utils/mediaQuery";
 import { useThrottle } from "@/shared/hooks/useThrottle";
+import { findLargeMediaQuery } from "@/shared/utils/mediaQuery";
 
 export default function HomePage() {
   const navigate = useNavigate();

@@ -1,4 +1,5 @@
 import { Outlet, useLocation } from "react-router-dom";
+
 import { cn } from "@/shared/lib/variants";
 
 export default function Layout() {

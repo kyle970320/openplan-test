@@ -1,6 +1,5 @@
-import { useNavigate } from "react-router-dom";
-
 import { Button } from "@openplan-test/ui";
+import { useNavigate } from "react-router-dom";
 
 import { Ban } from "@/shared/ui/Ban";
 

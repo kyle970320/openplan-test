@@ -16,7 +16,7 @@
   },
   "scripts": {
     "build": "vite build",
-    "lint": "eslint ."
+   "lint": "eslint . --max-warnings 0 --ignore-pattern dist/**"
   },
   "peerDependencies": {
     "react": "^19.2.1",

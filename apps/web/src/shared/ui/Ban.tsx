@@ -1,7 +1,7 @@
-import type { Variants } from "motion/react";
 import { motion, useAnimation } from "motion/react";
+import type { Variants } from "motion/react";
+import { forwardRef, useEffect, useRef } from "react";
 import type { HTMLAttributes } from "react";
-import React, { forwardRef, useEffect, useRef } from "react";
 
 import { cn } from "@/shared/lib/variants";
 
