@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { Button } from "@openplan-test/ui";
 import { useNavigate } from "react-router-dom";
 import { usePhotoInfo } from "@/entities";
@@ -11,10 +10,10 @@ export default function HomePage() {
   const navigate = useNavigate();
   const { setPhotoInfo } = usePhotoStore();
   const { refetch, isFetching } = usePhotoInfo("0", { enabled: false });
-  const throttledRefetch = useThrottle(refetch, 800);
+  const { throttledFunc: throttledRefetch, isThrottledLoading } = useThrottle(refetch, 800);
   const { mediaQuery } = useMediaQuery();
   const isOverMobile = findLargeMediaQuery("xs", mediaQuery);
-
+  const isButtonLoading = isFetching || isThrottledLoading;
   const handleFetchPhoto = async () => {
     const result = await throttledRefetch();
     if (!result) {
@@ -38,8 +37,8 @@ export default function HomePage() {
           variant="secondary"
           size={!isOverMobile ? "full" : "lg"}
           onClick={handleFetchPhoto}
-          disabled={isFetching}
-          loading={isFetching}
+          disabled={isButtonLoading}
+          loading={isButtonLoading}
         >
           사진 조회하기
         </Button>
