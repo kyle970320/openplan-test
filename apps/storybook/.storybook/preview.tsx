@@ -1,26 +1,19 @@
+import type { Preview } from "@storybook/react";
 import React from "react";
 
-import type { Preview } from "@storybook/react";
 import "@openplan-test/ui/style.css";
 import "../src/index.css";
 
 const preview: Preview = {
   decorators: [
     (Story) => (
-      <div
-        className="w-full min-h-screen flex justify-center items-center"
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          minHeight: "100vh",
-        }}
-      >
+      <div className="w-full min-h-40 flex justify-center items-center">
         <Story />
       </div>
     ),
   ],
   parameters: {
+    layout: "centered",
     controls: {
       matchers: {
         color: /(background|color)$/i,
