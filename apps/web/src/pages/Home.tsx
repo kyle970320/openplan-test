@@ -1,5 +1,5 @@
 import { Button } from "@openplan-test/ui";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { usePhotoInfo } from "@/entities";
 import { usePhotoStore } from "@/app/store/photoStore";
 import { useMediaQuery } from "@/shared/hooks/useMediaQuery";
@@ -7,7 +7,7 @@ import { findLargeMediaQuery } from "@/shared/utils/mediaQuery";
 import { useThrottle } from "@/shared/hooks/useThrottle";
 import { useEffect } from "react";
 import { Snackbar } from "@minus-ui/core";
-import { useFlagStore } from "@/app/store/flagStore";
+import { FLAG_KEYS, useFlagStore } from "@/app/store/flagStore";
 
 export default function HomePage() {
   const navigate = useNavigate();
@@ -37,7 +37,7 @@ export default function HomePage() {
   };
 
   useEffect(() => {
-    if (flag === "no-photo-info" && !photoInfo) {
+    if (flag === FLAG_KEYS.NO_PHOTO_INFO && !photoInfo) {
       Snackbar.show({ type: "info", message: "조회 이력이 없어 홈페이지로 이동되었습니다." });
       clearFlag();
     }

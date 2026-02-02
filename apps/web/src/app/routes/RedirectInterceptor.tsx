@@ -1,6 +1,6 @@
 import { Navigate } from "react-router-dom";
 import { usePhotoStore } from "@/app/store/photoStore";
-import { useFlagStore } from "../store/flagStore";
+import { FLAG_KEYS, useFlagStore } from "../store/flagStore";
 import { useEffect } from "react";
 
 export default function RedirectInterceptor() {
@@ -9,7 +9,7 @@ export default function RedirectInterceptor() {
 
   useEffect(() => {
     if (photoInfo) {
-      setFlag("already-fetched");
+      setFlag(FLAG_KEYS.ALREADY_FETCHED);
     }
   }, [photoInfo, setFlag]);
 

@@ -6,7 +6,7 @@ import { useMediaQuery } from "../shared/hooks/useMediaQuery";
 import { findLargeMediaQuery } from "../shared/utils/mediaQuery";
 import { Snackbar } from "@minus-ui/core";
 import { useEffect } from "react";
-import { useFlagStore } from "@/app/store/flagStore";
+import { FLAG_KEYS, useFlagStore } from "@/app/store/flagStore";
 
 export default function ResultPage() {
   const navigate = useNavigate();
@@ -19,7 +19,7 @@ export default function ResultPage() {
   const isOverMobile = findLargeMediaQuery("xs", mediaQuery);
 
   useEffect(() => {
-    if (flag === "already-fetched" && photoInfo) {
+    if (flag === FLAG_KEYS.ALREADY_FETCHED && photoInfo) {
       Snackbar.show({ type: "info", message: "조회 이력이 있어 상세페이지로 이동되었습니다." });
       clearFlag();
     }
@@ -28,8 +28,8 @@ export default function ResultPage() {
   useEffect(() => {
     if (!photoInfo) {
       const timer = setTimeout(() => {
-        setFlag("no-photo-info");
-        navigate("/home", { state: "no-photo-info", replace: true });
+        setFlag(FLAG_KEYS.NO_PHOTO_INFO);
+        navigate("/home", { replace: true });
       }, 1000);
 
       return () => clearTimeout(timer);
