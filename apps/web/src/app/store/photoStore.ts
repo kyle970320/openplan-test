@@ -1,10 +1,10 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-import type { PicsumPhotoInfo } from "../../entities/photo";
+import type { PhotoInfoType } from "../../entities/photo";
 
 interface PhotoState {
-  photoInfo: PicsumPhotoInfo | null;
-  setPhotoInfo: (data: PicsumPhotoInfo | null) => void;
+  photoInfo: PhotoInfoType | null;
+  setPhotoInfo: (data: PhotoInfoType | null) => void;
 }
 
 const STORAGE_KEY = "web-photo-store";

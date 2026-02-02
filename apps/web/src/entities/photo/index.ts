@@ -1,3 +1,3 @@
-export type { PicsumPhotoInfo } from "./types";
-export { getPicsumPhotoInfo } from "./api";
+export type { PhotoInfoType } from "./types";
+export { getPhotoInfoType } from "./api";
 export { usePhotoInfo } from "./usePhotoInfo";

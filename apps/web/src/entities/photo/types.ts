@@ -1,4 +1,4 @@
-export interface PicsumPhotoInfo {
+export interface PhotoInfoType {
   id: string;
   author: string;
   width: number;
