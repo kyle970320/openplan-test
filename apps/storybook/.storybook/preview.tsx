@@ -1,4 +1,5 @@
 import React from "react";
+
 import type { Preview } from "@storybook/react";
 import "@openplan-test/ui/style.css";
 import "../src/index.css";

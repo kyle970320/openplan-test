@@ -1,11 +1,11 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import HomePage from "@/pages/Home";
-import ResultPage from "@/pages/Result";
-import Layout from "@/app/Layout";
-
 import RedirectInterceptor from "./RedirectInterceptor";
 import RouteError from "./RouterError";
+
+import Layout from "@/app/Layout";
+import HomePage from "@/pages/Home";
+import ResultPage from "@/pages/Result";
 
 const router = createBrowserRouter([
   {

@@ -1,6 +1,7 @@
 {
   "name": "openplan-test",
   "private": true,
+  "type": "module",
   "scripts": {
     "build": "turbo run build",
     "build:ui": "pnpm --filter @openplan-test/ui build",
@@ -18,8 +19,11 @@
     "@eslint/js": "^9.15.0",
     "@types/node": "^22.10.1",
     "eslint": "^9.15.0",
+    "eslint-import-resolver-typescript": "^4.4.4",
+    "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-react-hooks": "^5.0.0",
     "eslint-plugin-react-refresh": "^0.4.14",
+    "eslint-plugin-unused-imports": "^4.3.0",
     "prettier": "^3.3.3",
     "turbo": "^2.3.0",
     "typescript-eslint": "^8.15.0"

@@ -1,7 +1,8 @@
-import { useMediaQuery } from "@/shared/hooks/useMediaQuery";
-import { findLargeMediaQuery } from "@/shared/utils/mediaQuery";
 import { DetailItem } from "./DetailItem";
 import { DetailRow } from "./DetailRow";
+
+import { useMediaQuery } from "@/shared/hooks/useMediaQuery";
+import { findLargeMediaQuery } from "@/shared/utils/mediaQuery";
 
 interface Props {
   photoInfo: {
