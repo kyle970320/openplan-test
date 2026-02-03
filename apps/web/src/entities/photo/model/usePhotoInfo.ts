@@ -1,8 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 import type { UseQueryOptions } from "@tanstack/react-query";
 
-import { getPhotoInfo } from "./api";
-import type { PhotoInfoType } from "./types";
+import { getPhotoInfo } from "../api/api";
+import type { PhotoInfoType } from "../types/types";
 
 const QUERY_KEY = ["picsum", "photo", "info"] as const;
 
