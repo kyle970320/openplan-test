@@ -47,6 +47,7 @@ export default function ResultPage() {
             variant="secondary"
             size={!isOverMobile ? "full" : "sm"}
             onClick={handleNavigateRoot}
+            className="mb-6"
           >
             <span>이전</span>
           </Button>

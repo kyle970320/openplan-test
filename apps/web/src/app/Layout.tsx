@@ -9,7 +9,7 @@ export default function Layout() {
     <div className="h-screen flex flex-col bg-bg text-[15px]">
       <header
         className={cn(
-          "relative z-10 flex items-center justify-center h-13 text-text-secondary font-medium",
+          "relative z-10 flex items-center justify-center min-h-13 text-text-secondary font-medium",
           isResultPage && "text-white"
         )}
       >
