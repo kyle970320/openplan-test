@@ -1,16 +1,13 @@
 import { Snackbar } from "@minus-ui/core";
-import { Button } from "@openplan-test/ui";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { FLAG_KEYS, useFlagStore } from "@/app/store/flagStore";
-import { usePhotoStore } from "@/app/store/photoStore";
 import { usePhotoInfo } from "@/entities";
-import { useMediaQuery } from "@/shared/hooks/useMediaQuery";
+import { usePhotoStore } from "@/entities/photo/store/photoStore";
 import { useThrottle } from "@/shared/hooks/useThrottle";
-import { findLargeMediaQuery } from "@/shared/utils/mediaQuery";
+import { FLAG_KEYS, useFlagStore } from "@/shared/store/flagStore";
 
-export default function HomePage() {
+export const useHome = () => {
   const navigate = useNavigate();
 
   const photoInfo = usePhotoStore((s) => s.photoInfo);
@@ -20,8 +17,6 @@ export default function HomePage() {
 
   const { refetch, isFetching } = usePhotoInfo("0", { enabled: false });
   const { throttledFunc: throttledRefetch, isThrottledLoading } = useThrottle(refetch, 800);
-  const { mediaQuery } = useMediaQuery();
-  const isOverMobile = findLargeMediaQuery("xs", mediaQuery);
 
   const isButtonLoading = isFetching || isThrottledLoading;
 
@@ -44,23 +39,5 @@ export default function HomePage() {
     }
   }, [flag, photoInfo, clearFlag]);
 
-  return (
-    <div className="h-full flex flex-col items-center">
-      <div className="flex-1 flex flex-col items-center justify-center text-[2rem] text-center font-semibold">
-        <p>안녕하세요</p>
-        <p>지원자 박민규입니다.</p>
-      </div>
-      <div className="flex justify-center w-full py-10">
-        <Button
-          variant="secondary"
-          size={!isOverMobile ? "full" : "lg"}
-          onClick={handleFetchPhoto}
-          disabled={isButtonLoading}
-          loading={isButtonLoading}
-        >
-          사진 조회하기
-        </Button>
-      </div>
-    </div>
-  );
-}
+  return { handleFetchPhoto, isButtonLoading, flag };
+};

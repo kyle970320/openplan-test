@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import type { PhotoInfoType } from "./types";
+import type { PhotoInfoType } from "../types/types";
 
 const BASE_URL = import.meta.env.VITE_PICSUM_BASE_URL;
 

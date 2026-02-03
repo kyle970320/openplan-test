@@ -4,8 +4,7 @@ import RedirectInterceptor from "./RedirectInterceptor";
 import RouteError from "./RouterError";
 
 import Layout from "@/app/Layout";
-import HomePage from "@/pages/Home";
-import ResultPage from "@/pages/Result";
+import Result from "@/pages/result/ui/Result";
 
 const router = createBrowserRouter([
   {
@@ -18,12 +17,8 @@ const router = createBrowserRouter([
         element: <RedirectInterceptor />,
       },
       {
-        path: "/home",
-        element: <HomePage />,
-      },
-      {
         path: "/result",
-        element: <ResultPage />,
+        element: <Result />,
       },
     ],
   },
