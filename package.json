@@ -7,6 +7,7 @@
     "build:ui": "pnpm --filter @openplan-test/ui build",
     "build:web": "pnpm --filter web build",
     "build:storybook": "pnpm --filter storybook build",
+    "build:vercel": "pnpm run build:ui && pnpm run build:web",
     "dev": "turbo run dev",
     "storybook": "turbo run storybook",
     "web": "turbo run web",
@@ -24,6 +25,7 @@
     "eslint-plugin-react-hooks": "^5.0.0",
     "eslint-plugin-react-refresh": "^0.4.14",
     "eslint-plugin-unused-imports": "^4.3.0",
+    "globals": "^15.12.0",
     "prettier": "^3.3.3",
     "turbo": "^2.3.0",
     "typescript-eslint": "^8.15.0"

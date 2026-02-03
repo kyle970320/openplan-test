@@ -1,6 +1,6 @@
-import styles from "./Button.module.css";
-
 import type { ReactNode } from "react";
+
+import styles from "./Button.module.css";
 
 export type ButtonVariant = "primary" | "secondary";
 
