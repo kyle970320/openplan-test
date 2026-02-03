@@ -1,41 +1,16 @@
-import { Snackbar } from "@minus-ui/core";
 import { Button } from "@openplan-test/ui";
-import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 
-import { FLAG_KEYS, useFlagStore } from "@/app/store/flagStore";
-import { usePhotoStore } from "@/app/store/photoStore";
+import { useResult } from "../model/useResult";
+
 import { useMediaQuery } from "@/shared/hooks/useMediaQuery";
 import { findLargeMediaQuery } from "@/shared/utils/mediaQuery";
 import DetailCard from "@/widgets/detail/DetailCard";
 
 export default function ResultPage() {
-  const navigate = useNavigate();
-  const photoInfo = usePhotoStore((s) => s.photoInfo);
-  const flag = useFlagStore((s) => s.flag);
-  const setFlag = useFlagStore((s) => s.setFlag);
-  const clearFlag = useFlagStore((s) => s.clearFlag);
+  const { photoInfo, handleNavigateRoot } = useResult();
 
   const { mediaQuery } = useMediaQuery();
   const isOverMobile = findLargeMediaQuery("xs", mediaQuery);
-
-  useEffect(() => {
-    if (flag === FLAG_KEYS.ALREADY_FETCHED && photoInfo) {
-      Snackbar.show({ type: "info", message: "조회 이력이 있어 상세페이지로 이동되었습니다." });
-      clearFlag();
-    }
-  }, [flag, photoInfo, clearFlag]);
-
-  useEffect(() => {
-    if (!photoInfo) {
-      const timer = setTimeout(() => {
-        setFlag(FLAG_KEYS.NO_PHOTO_INFO);
-        navigate("/home", { replace: true });
-      }, 1000);
-
-      return () => clearTimeout(timer);
-    }
-  }, [photoInfo, navigate, setFlag]);
 
   if (!photoInfo) {
     return (
@@ -70,7 +45,7 @@ export default function ResultPage() {
           <Button
             variant="secondary"
             size={!isOverMobile ? "full" : "sm"}
-            onClick={() => navigate("/home")}
+            onClick={handleNavigateRoot}
           >
             <span>이전</span>
           </Button>
