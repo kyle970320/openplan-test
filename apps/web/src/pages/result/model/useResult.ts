@@ -2,8 +2,8 @@ import { Snackbar } from "@minus-ui/core";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { FLAG_KEYS, useFlagStore } from "@/app/store/flagStore";
-import { usePhotoStore } from "@/app/store/photoStore";
+import { usePhotoStore } from "@/entities/photo/store/photoStore";
+import { FLAG_KEYS, useFlagStore } from "@/shared/store/flagStore";
 
 export const useResult = () => {
   const navigate = useNavigate();

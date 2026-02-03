@@ -2,10 +2,10 @@ import { Snackbar } from "@minus-ui/core";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { FLAG_KEYS, useFlagStore } from "@/app/store/flagStore";
-import { usePhotoStore } from "@/app/store/photoStore";
 import { usePhotoInfo } from "@/entities";
+import { usePhotoStore } from "@/entities/photo/store/photoStore";
 import { useThrottle } from "@/shared/hooks/useThrottle";
+import { FLAG_KEYS, useFlagStore } from "@/shared/store/flagStore";
 
 export const useHome = () => {
   const navigate = useNavigate();
