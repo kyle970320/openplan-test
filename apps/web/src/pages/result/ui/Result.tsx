@@ -3,19 +3,20 @@ import { Button } from "@openplan-test/ui";
 import { useResult } from "../model/useResult";
 
 import { useMediaQuery } from "@/shared/hooks/useMediaQuery";
+import Skeleton from "@/shared/ui/Skeleton";
 import { findLargeMediaQuery } from "@/shared/utils/mediaQuery";
 import DetailCard from "@/widgets/detail/DetailCard";
 
 export default function ResultPage() {
-  const { photoInfo, handleNavigateRoot } = useResult();
-
   const { mediaQuery } = useMediaQuery();
   const isOverMobile = findLargeMediaQuery("xs", mediaQuery);
+
+  const { photoInfo, handleNavigateRoot } = useResult();
 
   if (!photoInfo) {
     return (
       <div className="h-full flex flex-col items-center justify-center gap-4">
-        <p className="text-gray-600">조회된 사진 정보가 없습니다.</p>
+        <Skeleton className="w-full h-50 rounded bg-gray-200" />
       </div>
     );
   }
