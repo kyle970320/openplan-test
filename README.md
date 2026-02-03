@@ -209,6 +209,7 @@ pnpm format:check
 - [x] **데이터 영속성** - 새로고침 시에도 데이터 유지 (localStorage 사용)
 - [x] **스로틀링** - 사진 조회 버튼 클릭에 스로틀링 적용 (800ms)
 - [x] **로딩 애니메이션** - 스로틀링/로딩 시 버튼에 스피너 애니메이션 표시
+- [ ] **정보 영역에 스켈레톤**
 - [x] **자동 리다이렉트** - 조회 이력이 있을 시 `/result`로 자동 이동
 - [x] **보호된 라우트** - 조회 이력 없이 `/result` 접근 시 1초 후 메인 페이지로 이동
 - [x] **배경 이미지** - 조회한 사진을 배경으로 사용 (블러 효과 적용)
@@ -258,8 +259,8 @@ ux를 향상시키기 위해, 개인적으로 만들어 배포한 라이브러�
 
 ### 배포 URL
 
-- **GitHub Repository**: [Repository URL]
-- **Vercel 배포 URL**: [Deployment URL]
+- **GitHub Repository**: [[Repository URL](https://github.com/kyle970320/openplan-test/edit/develop/README.md)]
+- **Vercel 배포 URL**: [[Deployment URL](https://openplan-test-59wq.vercel.app/)]
 
 ### 프로젝트 아키텍처
 
